@@ -16,7 +16,7 @@ async def get_profile(current_user: CurrentUserDep):
 
 
 @router.patch("/profile", status_code=status.HTTP_200_OK, response_model=UserProfileResponse)
-async def update_me(
+async def update_profile(
     data: UserProfileUpdate,
     current_user: CurrentUserDep,
     service: UserServiceDep,
