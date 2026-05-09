@@ -1,5 +1,5 @@
 import jwt
-from jwt.exceptions import DecodeError
+from jwt.exceptions import DecodeError, ExpiredSignatureError
 from sqlalchemy.ext.asyncio import AsyncSession
 from datetime import datetime, timedelta, timezone
 from typing import Optional
@@ -37,6 +37,8 @@ class AuthService:
             return user_id
         except DecodeError:
             raise UnauthorizedError
+        except ExpiredSignatureError:
+            raise UnauthorizedError("Token expired")
 
     def _hash_password(self, password: str) -> str:
         return pwd_context.hash(password)
