@@ -15,7 +15,6 @@ async def create_project(
     current_user: CurrentUserDep,
     service: ProjectServiceDep,
 ):
-    """Create a travel project. Optionally include places from Art Institute API."""
     return await service.create(data, current_user)
 
 
@@ -28,7 +27,6 @@ async def list_projects(
     is_completed: Optional[bool] = Query(None),
 
 ):
-    """List the current user's projects with pagination and optional completion filter."""
     return await service.list(current_user, page=page, size=size, is_completed=is_completed)
 
 
@@ -38,7 +36,6 @@ async def get_project(
     current_user: CurrentUserDep,
     service: ProjectServiceDep,
 ):
-    """Get a single project (must belong to current user)."""
     return await service.get(project_id, current_user)
 
 
@@ -49,7 +46,6 @@ async def update_project(
     current_user: CurrentUserDep,
     service: ProjectServiceDep,
 ):
-    """Update project name, description, or start date."""
     return await service.update(project_id, data, current_user)
 
 
@@ -59,5 +55,4 @@ async def delete_project(
     current_user: CurrentUserDep,
     service: ProjectServiceDep,
 ):
-    """Delete a project. Blocked if any place is already visited."""
     await service.delete(project_id, current_user)
