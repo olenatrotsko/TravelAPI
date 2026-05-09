@@ -18,7 +18,7 @@ cp .env.example .env
 docker compose up --build
 
 # API is now available at http://localhost:8000
-# Interactive docs: http://localhost:8000/docs
+# Swagger docs: http://localhost:8000/docs
 ```
 
 ---
@@ -40,4 +40,5 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 ## Postman Collection
 
-Import `Travel_API.postman_collection.json` into Postman.  
+Import `Travel_API.postman_collection.json` into Postman 
+or go to https://www.postman.com/flask-api-8299/travelapi/folder/sixdm2u/projects?sideView=agentMode
