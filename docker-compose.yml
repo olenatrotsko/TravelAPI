@@ -2,20 +2,29 @@ services:
   db:
     image: postgres:17-alpine
     environment:
-      POSTGRES_USER: travel
-      POSTGRES_PASSWORD: travel
-      POSTGRES_DB: travel_db
+      POSTGRES_USER: travel # for dev purposes only
+      POSTGRES_PASSWORD: travel # for dev purposes only
+      POSTGRES_DB: travel_db # for dev purposes only
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
+    networks:
+      - travel_api_network
 
   api:
-    build: .
+    build: src
     ports:
       - "8000:8000"
+    env_file:
+      - src/.env
     depends_on:
       - db
+    networks:
+      - travel_api_network
 
 volumes:
   postgres_data:
+
+networks:
+  travel_api_network:
