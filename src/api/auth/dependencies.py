@@ -2,12 +2,9 @@ from typing import Annotated
 
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer
-import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.config import settings
 from core.database import get_db
-from core.exceptions import UnauthorizedError
 
 from .service import AuthService
 

@@ -2,7 +2,6 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from core.config import settings
 from core.database import create_tables
 from core.exceptions import (
     NotFoundError, ConflictError, ValidationError,
